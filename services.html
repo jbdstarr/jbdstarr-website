@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Services | JBD Starr Renovations</title>
+    <meta name="description" content="Full home remodeling, legal basement finishing, bathroom renovation, painting & flooring services across Brampton, Mississauga, Oakville & GTA. Call 647-446-8418.">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+.page-header { padding: 140px 40px 80px; text-align: center; background: linear-gradient(180deg, #143d59 0%, #1B4F72 100%); }
+.page-header h1 { font-size: clamp(2.2rem, 5vw, 3.8rem); color: #fff; margin-bottom: 16px; }
+.page-header h1 span { color: #C9A84C; font-style: italic; }
+.page-header p { color: rgba(255,255,255,0.75); max-width: 600px; margin: 0 auto; font-size: 1.1rem; }
+.service-detail { padding: 80px 40px; }
+.service-detail:nth-child(odd) { background: #F8FAFB; }
+.service-detail:nth-child(even) { background: #ffffff; }
+.service-detail-container { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+.service-detail:nth-child(even) .service-detail-container { direction: rtl; }
+.service-detail:nth-child(even) .service-detail-container > * { direction: ltr; }
+.service-detail-text h2 { font-size: clamp(1.5rem, 3vw, 2.2rem); color: #111827; margin-bottom: 12px; }
+.service-detail-text h2 span { color: #C9A84C; }
+.service-detail-text p { color: #4B5563; margin-bottom: 16px; line-height: 1.7; font-size: 15px; }
+.service-features { list-style: none; margin: 16px 0 24px; }
+.service-features li { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; color: #111827; font-size: 14px; }
+.service-features li::before { content: '✓'; color: #C9A84C; font-weight: bold; font-size: 16px; width: 22px; height: 22px; background: rgba(201,168,76,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.service-price { display: inline-block; background: rgba(201,168,76,0.1); border: 1px solid rgba(201,168,76,0.2); padding: 10px 20px; border-radius: 8px; color: #C9A84C; font-size: 14px; font-weight: 600; margin-bottom: 20px; }
+.service-visual { display: flex; align-items: center; justify-content: center; }
+.service-visual-box { width: 260px; height: 260px; border: 2px solid rgba(201,168,76,0.15); border-radius: 20px; display: flex; align-items: center; justify-content: center; font-size: 4rem; background: linear-gradient(135deg, #1B4F72, #143d59); transition: all 0.4s ease; }
+.service-visual-box:hover { transform: translateY(-5px) rotate(2deg); box-shadow: 0 20px 40px rgba(27,79,114,0.2); border-color: rgba(201,168,76,0.3); }
+.faq-section { padding: 80px 40px; background: #F8FAFB; }
+.faq-container { max-width: 800px; margin: 0 auto; }
+.faq-item { background: #ffffff; border: 1px solid rgba(27,79,114,0.08); border-radius: 12px; margin-bottom: 12px; overflow: hidden; transition: all 0.3s ease; }
+.faq-item:hover { border-color: rgba(201,168,76,0.15); }
+.faq-question { padding: 20px 24px; display: flex; justify-content: space-between; align-items: center; cursor: pointer; color: #111827; font-weight: 600; font-size: 15px; }
+.faq-question::after { content: '+'; color: #C9A84C; font-size: 1.5rem; transition: transform 0.3s; }
+.faq-item.active .faq-question::after { transform: rotate(45deg); }
+.faq-answer { padding: 0 24px; max-height: 0; overflow: hidden; transition: all 0.4s ease; color: #4B5563; font-size: 14px; line-height: 1.7; }
+.faq-item.active .faq-answer { padding: 0 24px 20px; max-height: 300px; }
+.cta-section { padding: 100px 40px; text-align: center; background: linear-gradient(135deg, #1B4F72 0%, #143d59 100%); position: relative; overflow: hidden; }
+.cta-section::before { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 500px; height: 500px; background: radial-gradient(circle, rgba(201,168,76,0.1), transparent 70%); pointer-events: none; }
+.cta-content { position: relative; z-index: 1; max-width: 700px; margin: 0 auto; }
+.cta-content h2 { font-size: clamp(2rem, 4vw, 3.2rem); color: #fff; margin-bottom: 16px; }
+.cta-content h2 span { color: #C9A84C; font-style: italic; }
+.cta-content p { color: rgba(255,255,255,0.75); font-size: 1.1rem; margin-bottom: 36px; }
+@media (max-width: 768px) { .service-detail-container { grid-template-columns: 1fr; gap: 30px; } .service-visual-box { width: 200px; height: 200px; } }
+</style>
+</head>
+<body>
+<div class="loader" id="loader"><div class="loader-content"><div class="loader-logo">JBD STARR</div><div class="loader-bar"></div></div></div>
+<nav class="navbar" id="navbar">
+    <a href="index.html" class="logo">JBD <span>Starr</span></a>
+    <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="services.html" class="active">Services</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="contact.html" class="nav-cta">Free Quote</a></li>
+    </ul>
+    <button class="mobile-menu-btn">☰</button>
+</nav>
+<header class="page-header">
+    <span class="section-label">Our Services</span>
+    <h1>Everything Your Home <span>Needs.</span></h1>
+    <p>From full remodels to finishing touches — one team, one warranty, zero middlemen. Serving Brampton, Mississauga, Oakville & the GTA.</p>
+</header>
+<section class="service-detail">
+    <div class="service-detail-container">
+        <div class="service-detail-text fade-left">
+            <span class="section-label">01</span>
+            <h2>Full Home <span>Remodeling</span></h2>
+            <p>Transform every room with a seamless, managed process. One team, one schedule, no surprises — from design to final walkthrough.</p>
+            <ul class="service-features">
+                <li>Complete kitchen & bathroom redesign</li>
+                <li>Open-concept floor plan modifications</li>
+                <li>Structural wall removal (with permits)</li>
+                <li>Electrical & plumbing upgrades</li>
+                <li>Custom cabinetry & millwork</li>
+                <li>Full project management included</li>
+            </ul>
+            <div class="service-price">Starting from $75,000</div>
+            <a href="services/full-home-remodeling.html" class="btn btn-outline btn-small" style="margin-right:12px;">Learn More</a>
+            <a href="tel:+16474468418" class="btn btn-primary">Get a Quote →</a>
+        </div>
+        <div class="service-visual fade-right">
+            <div class="service-visual-box">🏠</div>
+        </div>
+    </div>
+</section>
+<section class="service-detail">
+    <div class="service-detail-container">
+        <div class="service-detail-text fade-right">
+            <span class="section-label">02</span>
+            <h2>Legal Basement <span>Finishing</span></h2>
+            <p>Convert your basement into a rentable, code-compliant suite. Permits handled, inspections passed.</p>
+            <ul class="service-features">
+                <li>Egress window installation</li>
+                <li>Fire separation & soundproofing</li>
+                <li>Separate entrance construction</li>
+                <li>Kitchenette & bathroom rough-in</li>
+                <li>Permit application & inspection management</li>
+                <li>Legal suite compliance certification</li>
+            </ul>
+            <div class="service-price">$30,000 — $65,000</div>
+            <a href="services/legal-basement-finishing.html" class="btn btn-outline btn-small" style="margin-right:12px;">Learn More</a>
+            <a href="tel:+16474468418" class="btn btn-primary">Get a Quote →</a>
+        </div>
+        <div class="service-visual fade-left">
+            <div class="service-visual-box">🏗️</div>
+        </div>
+    </div>
+</section>
+<section class="service-detail">
+    <div class="service-detail-container">
+        <div class="service-detail-text fade-left">
+            <span class="section-label">03</span>
+            <h2>Bathroom <span>Renovation</span></h2>
+            <p>Luxury tile work, custom vanities, and expert plumbing. Your bathroom should feel like a retreat.</p>
+            <ul class="service-features">
+                <li>Custom tile & stone work</li>
+                <li>Walk-in shower & tub installation</li>
+                <li>Vanity & countertop replacement</li>
+                <li>Plumbing fixture upgrades</li>
+                <li>Heated flooring options</li>
+                <li>Lighting & ventilation updates</li>
+            </ul>
+            <div class="service-price">$12,000 — $35,000</div>
+            <a href="services/bathroom-renovation.html" class="btn btn-outline btn-small" style="margin-right:12px;">Learn More</a>
+            <a href="tel:+16474468418" class="btn btn-primary">Get a Quote →</a>
+        </div>
+        <div class="service-visual fade-right">
+            <div class="service-visual-box">🚿</div>
+        </div>
+    </div>
+</section>
+<section class="service-detail">
+    <div class="service-detail-container">
+        <div class="service-detail-text fade-right">
+            <span class="section-label">04</span>
+            <h2>Interior & Exterior <span>Painting</span></h2>
+            <p>Interior and exterior painting done clean, fast, and right — premium low-VOC products on properly prepped surfaces.</p>
+            <ul class="service-features">
+                <li>Full surface preparation & repair</li>
+                <li>Premium low-VOC paint products</li>
+                <li>Cabinet & trim painting</li>
+                <li>Exterior siding & deck staining</li>
+                <li>Popcorn ceiling removal</li>
+                <li>Color consultation included</li>
+            </ul>
+            <div class="service-price">Starting from $3,500 per room</div>
+            <a href="services/painting.html" class="btn btn-outline btn-small" style="margin-right:12px;">Learn More</a>
+            <a href="tel:+16474468418" class="btn btn-primary">Get a Quote →</a>
+        </div>
+        <div class="service-visual fade-left">
+            <div class="service-visual-box">🎨</div>
+        </div>
+    </div>
+</section>
+<section class="service-detail">
+    <div class="service-detail-container">
+        <div class="service-detail-text fade-left">
+            <span class="section-label">05</span>
+            <h2>Flooring <span>Installation</span></h2>
+            <p>Hardwood, LVP, tile, and carpet. We supply, deliver, and install — one team, one warranty, zero middleman.</p>
+            <ul class="service-features">
+                <li>Hardwood & engineered wood</li>
+                <li>Luxury Vinyl Plank (LVP)</li>
+                <li>Ceramic & porcelain tile</li>
+                <li>Carpet & underpad</li>
+                <li>Subfloor repair & leveling</li>
+                <li>Material supply included</li>
+            </ul>
+            <div class="service-price">Starting from $6/sqft installed</div>
+            <a href="services/flooring.html" class="btn btn-outline btn-small" style="margin-right:12px;">Learn More</a>
+            <a href="tel:+16474468418" class="btn btn-primary">Get a Quote →</a>
+        </div>
+        <div class="service-visual fade-right">
+            <div class="service-visual-box">🪵</div>
+        </div>
+    </div>
+</section>
+<section class="faq-section">
+    <div class="section-header fade-up">
+        <span class="section-label">FAQ</span>
+        <h2>Common <span>Questions</span></h2>
+    </div>
+    <div class="faq-container">
+        <div class="faq-item">
+            <div class="faq-question">How much does a typical renovation cost?</div>
+            <div class="faq-answer">Costs vary by scope. A bathroom renovation starts at $12,000–$15,000 and can reach $35,000+. A legal basement suite ranges from $30,000–$65,000. We provide free, itemized quotes so you have a real number before any work begins.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">How long does a basement finishing take?</div>
+            <div class="faq-answer">A legal basement finishing typically takes 6–10 weeks depending on scope, permitting timelines, and size. We give you a realistic schedule during the quote phase.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">Do you handle permits?</div>
+            <div class="faq-answer">Yes. We handle all required permits including legal basement suites, structural changes, and plumbing/electrical work. Code-compliant work protects your home's value and keeps your insurance valid.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">What areas do you serve?</div>
+            <div class="faq-answer">We serve Brampton, Mississauga, Oakville, Milton, Ajax, Vaughan, Burlington, Etobicoke, Caledon, Georgetown, and surrounding GTA communities.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">Are you insured?</div>
+            <div class="faq-answer">Yes. JBD Starr carries full liability insurance and WSIB coverage for all workers. We provide proof of insurance upon request — before any work begins.</div>
+        </div>
+    </div>
+</section>
+<section class="cta-section">
+    <div class="cta-content fade-up">
+        <h2>Have a <span>Project</span> in Mind?</h2>
+        <p>Get your free, no-obligation quote. We respond within 24 hours.</p>
+        <a href="tel:+16474468418" class="btn btn-primary" style="font-size:16px;padding:16px 40px;">Call 647-446-8418</a>
+    </div>
+</section>
+<script>
+document.querySelectorAll('.faq-question').forEach(q => {
+    q.addEventListener('click', () => {
+        const item = q.parentElement;
+        const isActive = item.classList.contains('active');
+        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+        if (!isActive) item.classList.add('active');
+    });
+});
+</script>
+
+    <div class="sticky-buttons">
+        <a href="https://wa.me/message/5JP5APSEA4PGI1" target="_blank" class="sticky-btn whatsapp" title="WhatsApp">💬<span class="tooltip">WhatsApp Chat</span></a>
+        <a href="tel:+16474468418" class="sticky-btn call" title="Call">📞<span class="tooltip">Call 647-446-8418</span></a>
+    </div>
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <a href="index.html" class="logo">JBD <span>Starr</span></a>
+                <p>Brampton & GTA's trusted renovation specialists. Licensed, insured, and committed to quality since 2014.</p>
+                <div class="footer-social">
+                    <a href="https://facebook.com/jbdstarr" target="_blank" title="Facebook">f</a>
+                    <a href="https://instagram.com/jbdstarr" target="_blank" title="Instagram">📷</a>
+                    <a href="https://g.page/jbdstarr/review" target="_blank" title="Google Reviews">G</a>
+                    <a href="https://houzz.com/pro/jbdstarr" target="_blank" title="Houzz">H</a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Services</h4>
+                <ul>
+                    <li><a href="services/full-home-remodeling.html">Full Home Remodeling</a></li>
+                    <li><a href="services/legal-basement-finishing.html">Basement Finishing</a></li>
+                    <li><a href="services/bathroom-renovation.html">Bathroom Renovation</a></li>
+                    <li><a href="services/painting.html">Painting</a></li>
+                    <li><a href="services/flooring.html">Flooring</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="gallery.html">Our Work</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Areas</h4>
+                <ul><li>Brampton</li><li>Mississauga</li><li>Oakville</li><li>Milton</li><li>Ajax</li></ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <div class="footer-contact-item"><span class="icon">📧</span><a href="mailto:jbdstarr@outlook.com">jbdstarr@outlook.com</a></div>
+                <div class="footer-contact-item"><span class="icon">📱</span><a href="tel:+16474468418">647-446-8418</a></div>
+                <div class="footer-contact-item"><span class="icon">💬</span><a href="https://wa.me/message/5JP5APSEA4PGI1" target="_blank">WhatsApp Chat</a></div>
+                <div class="footer-contact-item"><span class="icon">📍</span><span>Brampton, Ontario, Canada</span></div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>© 2026 JBD Starr. All rights reserved.</span>
+            <span>Licensed & Insured · WSIB Covered</span>
+        </div>
+    </footer>
+    <script src="scripts.js"></script>
+</body>
+</html>

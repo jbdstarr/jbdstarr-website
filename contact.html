@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | JBD Starr Renovations</title>
+    <meta name="description" content="Get a free quote from JBD Starr. Serving Brampton, Mississauga, Oakville & GTA. Free consultation within 24 hours. Call 647-446-8418.">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+.page-header { padding: 140px 40px 80px; text-align: center; background: linear-gradient(180deg, #143d59 0%, #1B4F72 100%); }
+.page-header h1 { font-size: clamp(2.2rem, 5vw, 3.8rem); color: #fff; margin-bottom: 16px; }
+.page-header h1 span { color: #C9A84C; font-style: italic; }
+.page-header p { color: rgba(255,255,255,0.75); max-width: 600px; margin: 0 auto; font-size: 1.1rem; }
+.contact-section { padding: 80px 40px; background: #F8FAFB; }
+.contact-container { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: start; }
+.contact-form-wrapper { background: #ffffff; border: 1px solid rgba(27,79,114,0.08); border-radius: 20px; padding: 40px; box-shadow: 0 10px 40px rgba(27,79,114,0.06); }
+.contact-form-wrapper h2 { font-size: 1.6rem; color: #111827; margin-bottom: 8px; }
+.contact-form-wrapper > p { color: #4B5563; margin-bottom: 28px; font-size: 14px; }
+.form-submit { width: 100%; margin-top: 12px; justify-content: center; }
+.contact-info { padding: 20px 0; }
+.contact-info h2 { font-size: 1.6rem; color: #111827; margin-bottom: 28px; }
+.contact-info h2 span { color: #C9A84C; }
+.contact-method { display: flex; align-items: flex-start; gap: 16px; margin-bottom: 24px; padding: 20px; background: #ffffff; border: 1px solid rgba(27,79,114,0.08); border-radius: 14px; transition: all 0.3s ease; }
+.contact-method:hover { border-color: rgba(201,168,76,0.2); transform: translateX(5px); box-shadow: 0 10px 30px rgba(27,79,114,0.06); }
+.contact-method-icon { width: 50px; height: 50px; border-radius: 12px; background: rgba(201,168,76,0.1); display: flex; align-items: center; justify-content: center; font-size: 22px; flex-shrink: 0; }
+.contact-method-text h3 { font-size: 15px; color: #111827; margin-bottom: 4px; font-weight: 600; }
+.contact-method-text a, .contact-method-text span { color: #4B5563; text-decoration: none; font-size: 14px; transition: color 0.3s; }
+.contact-method-text a:hover { color: #C9A84C; }
+.social-section { padding: 60px 40px 80px; background: #ffffff; text-align: center; }
+.social-section h2 { font-size: 1.6rem; color: #111827; margin-bottom: 12px; }
+.social-section h2 span { color: #C9A84C; }
+.social-section p { color: #4B5563; margin-bottom: 32px; }
+.social-grid { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
+.social-card { background: #F8FAFB; border: 1px solid rgba(27,79,114,0.08); border-radius: 16px; padding: 32px; width: 160px; text-align: center; transition: all 0.3s ease; text-decoration: none; }
+.social-card:hover { border-color: rgba(201,168,76,0.2); transform: translateY(-5px); box-shadow: 0 15px 40px rgba(27,79,114,0.08); }
+.social-card-icon { font-size: 2.2rem; margin-bottom: 14px; display: block; }
+.social-card h3 { font-size: 15px; color: #111827; margin-bottom: 4px; font-family: 'Inter', sans-serif; }
+.social-card span { font-size: 12px; color: #9CA3AF; }
+.areas-section { padding: 50px 40px; background: #F8FAFB; text-align: center; }
+.areas-grid { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; max-width: 900px; margin: 24px auto 0; }
+.area-tag { padding: 10px 22px; background: #ffffff; border: 1px solid rgba(27,79,114,0.1); border-radius: 30px; color: #4B5563; font-size: 14px; transition: all 0.3s ease; }
+.area-tag:hover { border-color: #C9A84C; color: #C9A84C; background: rgba(201,168,76,0.05); }
+.toast { position: fixed; bottom: 24px; right: 24px; padding: 16px 28px; border-radius: 10px; color: #fff; font-weight: 500; z-index: 10000; transform: translateX(200%); transition: transform 0.4s ease; box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
+.toast.show { transform: translateX(0); }
+.toast.success { background: #10B981; }
+@media (max-width: 768px) { .contact-container { grid-template-columns: 1fr; } .form-row { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<div class="loader" id="loader"><div class="loader-content"><div class="loader-logo">JBD STARR</div><div class="loader-bar"></div></div></div>
+<nav class="navbar" id="navbar">
+    <a href="index.html" class="logo">JBD <span>Starr</span></a>
+    <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="contact.html" class="active">Contact</a></li>
+        <li><a href="contact.html" class="nav-cta">Free Quote</a></li>
+    </ul>
+    <button class="mobile-menu-btn">☰</button>
+</nav>
+<header class="page-header">
+    <span class="section-label">Get In Touch</span>
+    <h1>Let's Build <span>Together.</span></h1>
+    <p>Ready to transform your home? Get your free, no-obligation quote. We respond within 24 hours.</p>
+</header>
+<section class="contact-section">
+    <div class="contact-container">
+        <div class="contact-form-wrapper fade-left">
+            <h2>Request a Free Quote</h2>
+            <p>Fill out the form below and we'll get back to you within 24 hours.</p>
+            <form id="quoteForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label">First Name *</label>
+                        <input type="text" name="firstName" class="form-input" placeholder="John" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Last Name *</label>
+                        <input type="text" name="lastName" class="form-input" placeholder="Doe" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label">Email *</label>
+                        <input type="email" name="email" class="form-input" placeholder="john@example.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Phone *</label>
+                        <input type="tel" name="phone" class="form-input" placeholder="647-446-8418" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">City / Area *</label>
+                    <select name="city" class="form-select" required>
+                        <option value="">Select your area</option>
+                        <option value="Brampton">Brampton</option>
+                        <option value="Mississauga">Mississauga</option>
+                        <option value="Oakville">Oakville</option>
+                        <option value="Milton">Milton</option>
+                        <option value="Ajax">Ajax</option>
+                        <option value="Vaughan">Vaughan</option>
+                        <option value="Burlington">Burlington</option>
+                        <option value="Etobicoke">Etobicoke</option>
+                        <option value="Caledon">Caledon</option>
+                        <option value="Georgetown">Georgetown</option>
+                        <option value="Other">Other GTA</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Service Type *</label>
+                    <select name="service" class="form-select" required>
+                        <option value="">Select a service</option>
+                        <option value="Full Home Remodel">Full Home Remodel</option>
+                        <option value="Legal Basement Suite">Legal Basement Suite</option>
+                        <option value="Bathroom Renovation">Bathroom Renovation</option>
+                        <option value="Kitchen Remodel">Kitchen Remodel</option>
+                        <option value="Painting">Painting</option>
+                        <option value="Flooring">Flooring</option>
+                        <option value="Multiple Services">Multiple Services</option>
+                        <option value="Not Sure">Not Sure — Need Advice</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Project Details</label>
+                    <textarea name="message" class="form-textarea" placeholder="Tell us about your project, timeline, and budget..."></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary form-submit">Send Request →</button>
+                <p style="color: #9CA3AF; font-size: 12px; margin-top: 16px; text-align: center;">🔒 Your information is secure. We never share your data.</p>
+            </form>
+        </div>
+        <div class="contact-info fade-right">
+            <h2>Contact <span>Information</span></h2>
+            <div class="contact-method">
+                <div class="contact-method-icon">📧</div>
+                <div class="contact-method-text">
+                    <h3>Email Us</h3>
+                    <a href="mailto:jbdstarr@outlook.com">jbdstarr@outlook.com</a>
+                </div>
+            </div>
+            <div class="contact-method">
+                <div class="contact-method-icon">📱</div>
+                <div class="contact-method-text">
+                    <h3>Call Us</h3>
+                    <a href="tel:+16474468418">647-446-8418</a>
+                </div>
+            </div>
+            <div class="contact-method">
+                <div class="contact-method-icon">💬</div>
+                <div class="contact-method-text">
+                    <h3>WhatsApp</h3>
+                    <a href="https://wa.me/message/5JP5APSEA4PGI1" target="_blank">Chat on WhatsApp</a>
+                </div>
+            </div>
+            <div class="contact-method">
+                <div class="contact-method-icon">📍</div>
+                <div class="contact-method-text">
+                    <h3>Visit Us</h3>
+                    <span>Brampton, Ontario, Canada<br>Serving all GTA communities</span>
+                </div>
+            </div>
+            <div class="contact-method">
+                <div class="contact-method-icon">⏰</div>
+                <div class="contact-method-text">
+                    <h3>Business Hours</h3>
+                    <span>Mon–Fri: 8:00 AM – 6:00 PM<br>Sat: 9:00 AM – 4:00 PM<br>Sun: By Appointment</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="social-section">
+    <span class="section-label">Follow Us</span>
+    <h2>Connect on <span>Social Media</span></h2>
+    <p>See our latest projects, tips, and behind-the-scenes content.</p>
+    <div class="social-grid">
+        <a href="https://facebook.com/jbdstarr" target="_blank" class="social-card">
+            <span class="social-card-icon">📘</span>
+            <h3>Facebook</h3>
+            <span>@jbdstarr</span>
+        </a>
+        <a href="https://instagram.com/jbdstarr" target="_blank" class="social-card">
+            <span class="social-card-icon">📷</span>
+            <h3>Instagram</h3>
+            <span>@jbdstarr</span>
+        </a>
+        <a href="https://g.page/jbdstarr/review" target="_blank" class="social-card">
+            <span class="social-card-icon">⭐</span>
+            <h3>Google</h3>
+            <span>Leave a Review</span>
+        </a>
+        <a href="https://houzz.com/pro/jbdstarr" target="_blank" class="social-card">
+            <span class="social-card-icon">🏠</span>
+            <h3>Houzz</h3>
+            <span>View Profile</span>
+        </a>
+    </div>
+</section>
+<section class="areas-section">
+    <span class="section-label">Service Areas</span>
+    <h2>Where We <span>Work</span></h2>
+    <div class="areas-grid">
+        <span class="area-tag">Brampton</span>
+        <span class="area-tag">Mississauga</span>
+        <span class="area-tag">Oakville</span>
+        <span class="area-tag">Milton</span>
+        <span class="area-tag">Ajax</span>
+        <span class="area-tag">Vaughan</span>
+        <span class="area-tag">Burlington</span>
+        <span class="area-tag">Etobicoke</span>
+        <span class="area-tag">Caledon</span>
+        <span class="area-tag">Georgetown</span>
+        <span class="area-tag">Greater Toronto Area</span>
+    </div>
+</section>
+<script>
+const form = document.getElementById('quoteForm');
+form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const data = new FormData(form);
+    const subject = 'New Quote Request from ' + data.get('firstName') + ' ' + data.get('lastName');
+    let body = 'New Quote Request from JBD Starr Website\n\n';
+    body += 'Name: ' + data.get('firstName') + ' ' + data.get('lastName') + '\n';
+    body += 'Email: ' + data.get('email') + '\n';
+    body += 'Phone: ' + data.get('phone') + '\n';
+    body += 'City: ' + data.get('city') + '\n';
+    body += 'Service: ' + data.get('service') + '\n';
+    body += 'Message: ' + (data.get('message') || 'N/A') + '\n';
+    window.location.href = 'mailto:jbdstarr@outlook.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+    const toast = document.createElement('div');
+    toast.className = 'toast success show';
+    toast.textContent = 'Opening your email client...';
+    document.body.appendChild(toast);
+    setTimeout(() => toast.remove(), 3000);
+});
+</script>
+
+    <div class="sticky-buttons">
+        <a href="https://wa.me/message/5JP5APSEA4PGI1" target="_blank" class="sticky-btn whatsapp" title="WhatsApp">💬<span class="tooltip">WhatsApp Chat</span></a>
+        <a href="tel:+16474468418" class="sticky-btn call" title="Call">📞<span class="tooltip">Call 647-446-8418</span></a>
+    </div>
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <a href="index.html" class="logo">JBD <span>Starr</span></a>
+                <p>Brampton & GTA's trusted renovation specialists. Licensed, insured, and committed to quality since 2014.</p>
+                <div class="footer-social">
+                    <a href="https://facebook.com/jbdstarr" target="_blank" title="Facebook">f</a>
+                    <a href="https://instagram.com/jbdstarr" target="_blank" title="Instagram">📷</a>
+                    <a href="https://g.page/jbdstarr/review" target="_blank" title="Google Reviews">G</a>
+                    <a href="https://houzz.com/pro/jbdstarr" target="_blank" title="Houzz">H</a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Services</h4>
+                <ul>
+                    <li><a href="services/full-home-remodeling.html">Full Home Remodeling</a></li>
+                    <li><a href="services/legal-basement-finishing.html">Basement Finishing</a></li>
+                    <li><a href="services/bathroom-renovation.html">Bathroom Renovation</a></li>
+                    <li><a href="services/painting.html">Painting</a></li>
+                    <li><a href="services/flooring.html">Flooring</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="gallery.html">Our Work</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Areas</h4>
+                <ul><li>Brampton</li><li>Mississauga</li><li>Oakville</li><li>Milton</li><li>Ajax</li></ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <div class="footer-contact-item"><span class="icon">📧</span><a href="mailto:jbdstarr@outlook.com">jbdstarr@outlook.com</a></div>
+                <div class="footer-contact-item"><span class="icon">📱</span><a href="tel:+16474468418">647-446-8418</a></div>
+                <div class="footer-contact-item"><span class="icon">💬</span><a href="https://wa.me/message/5JP5APSEA4PGI1" target="_blank">WhatsApp Chat</a></div>
+                <div class="footer-contact-item"><span class="icon">📍</span><span>Brampton, Ontario, Canada</span></div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>© 2026 JBD Starr. All rights reserved.</span>
+            <span>Licensed & Insured · WSIB Covered</span>
+        </div>
+    </footer>
+    <script src="scripts.js"></script>
+</body>
+</html>

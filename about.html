@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | JBD Starr Renovations</title>
+    <meta name="description" content="Learn about JBD Starr - Brampton's trusted renovation team with 10+ years experience and 200+ completed projects across the GTA.">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+.page-header { padding: 140px 40px 80px; text-align: center; background: linear-gradient(180deg, #143d59 0%, #1B4F72 100%); }
+.page-header h1 { font-size: clamp(2.2rem, 5vw, 3.8rem); color: #fff; margin-bottom: 16px; }
+.page-header h1 span { color: #C9A84C; font-style: italic; }
+.page-header p { color: rgba(255,255,255,0.75); max-width: 600px; margin: 0 auto; font-size: 1.1rem; }
+.story-section { padding: 100px 40px; background: #F8FAFB; }
+.story-container { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+.story-text h2 { font-size: clamp(1.6rem, 3vw, 2.2rem); color: #111827; margin-bottom: 20px; }
+.story-text h2 span { color: #C9A84C; }
+.story-text p { color: #4B5563; margin-bottom: 20px; line-height: 1.8; font-size: 15px; }
+.story-visual { display: flex; align-items: center; justify-content: center; }
+.story-visual-box { width: 280px; height: 280px; border: 3px solid rgba(201,168,76,0.3); border-radius: 24px; display: flex; align-items: center; justify-content: center; position: relative; background: linear-gradient(135deg, #1B4F72, #143d59); animation: floatBox 6s ease-in-out infinite; }
+.story-visual-box::before { content: '10+'; font-family: 'Playfair Display', serif; font-size: 5rem; color: #C9A84C; font-weight: 700; }
+.story-visual-box::after { content: 'Years of Excellence'; position: absolute; bottom: -40px; font-size: 14px; color: #4B5563; letter-spacing: 2px; text-transform: uppercase; }
+@keyframes floatBox { 0%,100% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(-15px) rotate(2deg); } }
+.values-section { padding: 100px 40px; background: #ffffff; }
+.values-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 24px; max-width: 1200px; margin: 0 auto; }
+.value-card { background: #F8FAFB; border: 1px solid rgba(27,79,114,0.08); border-radius: 16px; padding: 40px 28px; text-align: center; transition: all 0.3s ease; }
+.value-card:hover { transform: translateY(-5px); border-color: rgba(201,168,76,0.2); box-shadow: 0 15px 40px rgba(27,79,114,0.08); }
+.value-icon { font-size: 2.8rem; margin-bottom: 20px; display: block; }
+.value-card h3 { font-size: 1.2rem; color: #111827; margin-bottom: 10px; }
+.value-card p { color: #4B5563; font-size: 14px; line-height: 1.6; }
+.team-section { padding: 100px 40px; background: #F8FAFB; }
+.team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; max-width: 1000px; margin: 0 auto; }
+.team-card { background: #ffffff; border: 1px solid rgba(27,79,114,0.08); border-radius: 16px; padding: 36px 24px; text-align: center; transition: all 0.3s ease; }
+.team-card:hover { transform: translateY(-5px); border-color: rgba(201,168,76,0.2); box-shadow: 0 15px 40px rgba(27,79,114,0.08); }
+.team-avatar { width: 80px; height: 80px; border-radius: 50%; background: linear-gradient(135deg, #1B4F72, #143d59); display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; color: #fff; font-weight: 700; font-size: 1.5rem; }
+.team-card h3 { font-size: 1.1rem; color: #111827; margin-bottom: 4px; }
+.team-card span { color: #C9A84C; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; font-weight: 500; }
+.team-card p { color: #4B5563; font-size: 14px; margin-top: 14px; line-height: 1.6; }
+.cert-section { padding: 60px 40px; background: #ffffff; text-align: center; }
+.cert-grid { display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; max-width: 900px; margin: 30px auto 0; }
+.cert-item { display: flex; align-items: center; gap: 10px; color: #4B5563; font-size: 15px; font-weight: 500; }
+.cert-item .check { color: #C9A84C; font-size: 20px; }
+.cta-section { padding: 100px 40px; text-align: center; background: linear-gradient(135deg, #1B4F72 0%, #143d59 100%); position: relative; overflow: hidden; }
+.cta-section::before { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 500px; height: 500px; background: radial-gradient(circle, rgba(201,168,76,0.1), transparent 70%); pointer-events: none; }
+.cta-content { position: relative; z-index: 1; max-width: 700px; margin: 0 auto; }
+.cta-content h2 { font-size: clamp(2rem, 4vw, 3.2rem); color: #fff; margin-bottom: 16px; }
+.cta-content h2 span { color: #C9A84C; font-style: italic; }
+.cta-content p { color: rgba(255,255,255,0.75); font-size: 1.1rem; margin-bottom: 36px; }
+@media (max-width: 768px) { .story-container { grid-template-columns: 1fr; } .story-visual-box { width: 220px; height: 220px; } }
+</style>
+</head>
+<body>
+<div class="loader" id="loader"><div class="loader-content"><div class="loader-logo">JBD STARR</div><div class="loader-bar"></div></div></div>
+<nav class="navbar" id="navbar">
+    <a href="index.html" class="logo">JBD <span>Starr</span></a>
+    <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html" class="active">About</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="contact.html" class="nav-cta">Free Quote</a></li>
+    </ul>
+    <button class="mobile-menu-btn">☰</button>
+</nav>
+<header class="page-header">
+    <span class="section-label">About Us</span>
+    <h1>Built on Trust. <span>Proven by Results.</span></h1>
+    <p>For over a decade, we've been transforming GTA homes with craftsmanship, integrity, and a commitment to doing things right the first time.</p>
+</header>
+<section class="story-section">
+    <div class="story-container">
+        <div class="story-text fade-left">
+            <h2>Our <span>Story</span></h2>
+            <p>JBD Starr was founded with a simple belief: every homeowner deserves a renovation experience that's transparent, professional, and stress-free. What started as a small Brampton operation has grown into one of the GTA's most trusted renovation teams.</p>
+            <p>Over 200 projects later, we've maintained our core values — quality craftsmanship, clear communication, and treating every home as if it were our own. We don't cut corners. We don't hide costs. We deliver what we promise.</p>
+            <p>Our team is fully licensed, insured, and WSIB-covered. Every project meets Ontario Building Code standards, with permits pulled and inspections passed.</p>
+            <a href="contact.html" class="btn btn-primary">Work With Us →</a>
+        </div>
+        <div class="story-visual fade-right">
+            <div class="story-visual-box"></div>
+        </div>
+    </div>
+</section>
+<section class="values-section">
+    <div class="section-header fade-up">
+        <span class="section-label">Our Values</span>
+        <h2>What We Stand <span>For</span></h2>
+    </div>
+    <div class="values-grid stagger-container">
+        <div class="value-card">
+            <span class="value-icon">🏗️</span>
+            <h3>Built to Code</h3>
+            <p>Every project meets Ontario Building Code. Permits pulled, inspections passed — protecting your home's value today and when you sell.</p>
+        </div>
+        <div class="value-card">
+            <span class="value-icon">🤝</span>
+            <h3>One Team</h3>
+            <p>No unknown subcontractors. Our crew manages every phase with one point of contact throughout your entire project.</p>
+        </div>
+        <div class="value-card">
+            <span class="value-icon">💰</span>
+            <h3>Transparent Pricing</h3>
+            <p>Detailed, itemized quote before any work begins. No surprise invoices. What we quote is what you pay.</p>
+        </div>
+        <div class="value-card">
+            <span class="value-icon">🏠</span>
+            <h3>Local & Reliable</h3>
+            <p>We live and work in the GTA. We're the neighbour you can trust with your biggest investment.</p>
+        </div>
+    </div>
+</section>
+<section class="team-section">
+    <div class="section-header fade-up">
+        <span class="section-label">The Team</span>
+        <h2>Meet the People Behind <span>JBD Starr</span></h2>
+    </div>
+    <div class="team-grid stagger-container">
+        <div class="team-card">
+            <div class="team-avatar">JS</div>
+            <h3>James Starr</h3>
+            <span>Founder & Project Lead</span>
+            <p>10+ years in GTA renovation. Oversees every project from quote to completion.</p>
+        </div>
+        <div class="team-card">
+            <div class="team-avatar">MK</div>
+            <h3>Michael K.</h3>
+            <span>Site Supervisor</span>
+            <p>Expert in building code compliance and quality control on every job site.</p>
+        </div>
+        <div class="team-card">
+            <div class="team-avatar">SR</div>
+            <h3>Sarah R.</h3>
+            <span>Design Consultant</span>
+            <p>Helps homeowners visualize their space and choose materials that fit their style and budget.</p>
+        </div>
+    </div>
+</section>
+<section class="cert-section">
+    <span class="section-label">Certifications</span>
+    <div class="cert-grid">
+        <div class="cert-item"><span class="check">✓</span> Licensed Contractor</div>
+        <div class="cert-item"><span class="check">✓</span> Fully Insured</div>
+        <div class="cert-item"><span class="check">✓</span> WSIB Covered</div>
+        <div class="cert-item"><span class="check">✓</span> Ontario Building Code Compliant</div>
+        <div class="cert-item"><span class="check">✓</span> 5-Star Google Rated</div>
+    </div>
+</section>
+<section class="cta-section">
+    <div class="cta-content fade-up">
+        <h2>Ready to Start Your <span>Project?</span></h2>
+        <p>Let's discuss your vision. Free consultation, no obligation.</p>
+        <a href="tel:+16474468418" class="btn btn-primary" style="font-size:16px;padding:16px 40px;">Call 647-446-8418</a>
+    </div>
+</section>
+
+    <div class="sticky-buttons">
+        <a href="https://wa.me/message/5JP5APSEA4PGI1" target="_blank" class="sticky-btn whatsapp" title="WhatsApp">💬<span class="tooltip">WhatsApp Chat</span></a>
+        <a href="tel:+16474468418" class="sticky-btn call" title="Call">📞<span class="tooltip">Call 647-446-8418</span></a>
+    </div>
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <a href="index.html" class="logo">JBD <span>Starr</span></a>
+                <p>Brampton & GTA's trusted renovation specialists. Licensed, insured, and committed to quality since 2014.</p>
+                <div class="footer-social">
+                    <a href="https://facebook.com/jbdstarr" target="_blank" title="Facebook">f</a>
+                    <a href="https://instagram.com/jbdstarr" target="_blank" title="Instagram">📷</a>
+                    <a href="https://g.page/jbdstarr/review" target="_blank" title="Google Reviews">G</a>
+                    <a href="https://houzz.com/pro/jbdstarr" target="_blank" title="Houzz">H</a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Services</h4>
+                <ul>
+                    <li><a href="services/full-home-remodeling.html">Full Home Remodeling</a></li>
+                    <li><a href="services/legal-basement-finishing.html">Basement Finishing</a></li>
+                    <li><a href="services/bathroom-renovation.html">Bathroom Renovation</a></li>
+                    <li><a href="services/painting.html">Painting</a></li>
+                    <li><a href="services/flooring.html">Flooring</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="gallery.html">Our Work</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Areas</h4>
+                <ul><li>Brampton</li><li>Mississauga</li><li>Oakville</li><li>Milton</li><li>Ajax</li></ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <div class="footer-contact-item"><span class="icon">📧</span><a href="mailto:jbdstarr@outlook.com">jbdstarr@outlook.com</a></div>
+                <div class="footer-contact-item"><span class="icon">📱</span><a href="tel:+16474468418">647-446-8418</a></div>
+                <div class="footer-contact-item"><span class="icon">💬</span><a href="https://wa.me/message/5JP5APSEA4PGI1" target="_blank">WhatsApp Chat</a></div>
+                <div class="footer-contact-item"><span class="icon">📍</span><span>Brampton, Ontario, Canada</span></div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>© 2026 JBD Starr. All rights reserved.</span>
+            <span>Licensed & Insured · WSIB Covered</span>
+        </div>
+    </footer>
+    <script src="scripts.js"></script>
+</body>
+</html>
