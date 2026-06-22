@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bathroom Renovation | JBD Starr Renovations</title>
+    <meta name="description" content="Luxury tile work, custom vanities, and expert plumbing. Your bathroom should feel like a retreat — JBD Starr makes it happen.">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <link rel="stylesheet" href="../styles.css">
+    <style>
+.page-header { padding: 120px 40px 60px; text-align: center; background: linear-gradient(180deg, #143d59 0%, #1B4F72 100%); }
+.page-header .service-icon-large { font-size: 4rem; margin-bottom: 20px; display: block; }
+.page-header h1 { font-size: clamp(2rem, 4vw, 3.2rem); color: #fff; margin-bottom: 12px; }
+.page-header p { color: rgba(255,255,255,0.75); max-width: 600px; margin: 0 auto; font-size: 1.05rem; }
+.service-detail-section { padding: 80px 40px; background: #F8FAFB; }
+.service-detail-container { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 50px; align-items: start; }
+.service-detail-text h2 { font-size: clamp(1.5rem, 3vw, 2rem); color: #111827; margin-bottom: 16px; }
+.service-detail-text h2 span { color: #C9A84C; }
+.service-detail-text p { color: #4B5563; margin-bottom: 16px; line-height: 1.8; font-size: 15px; }
+.service-features { list-style: none; margin: 24px 0; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.service-features li { display: flex; align-items: center; gap: 10px; color: #111827; font-size: 14px; padding: 8px 0; }
+.service-features li::before { content: '✓'; color: #C9A84C; font-weight: bold; font-size: 16px; width: 24px; height: 24px; background: rgba(201,168,76,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.price-card { background: #ffffff; border: 1px solid rgba(201,168,76,0.2); border-radius: 16px; padding: 28px; margin-bottom: 24px; box-shadow: 0 10px 30px rgba(27,79,114,0.06); }
+.price-card h3 { font-size: 12px; text-transform: uppercase; letter-spacing: 2px; color: #C9A84C; margin-bottom: 8px; font-weight: 600; }
+.price-card .price { font-family: 'Playfair Display', serif; font-size: 1.8rem; color: #111827; margin-bottom: 8px; }
+.price-card p { color: #4B5563; font-size: 14px; margin-bottom: 20px; }
+.timeline-card { background: #ffffff; border: 1px solid rgba(27,79,114,0.08); border-radius: 16px; padding: 28px; margin-bottom: 24px; }
+.timeline-card h3 { font-size: 12px; text-transform: uppercase; letter-spacing: 2px; color: #9CA3AF; margin-bottom: 8px; font-weight: 600; }
+.timeline-card .timeline { font-size: 1.2rem; color: #111827; font-weight: 600; }
+.cta-card { background: linear-gradient(135deg, rgba(201,168,76,0.08), rgba(201,168,76,0.02)); border: 1px solid rgba(201,168,76,0.15); border-radius: 16px; padding: 28px; text-align: center; }
+.cta-card h3 { font-size: 1.1rem; color: #111827; margin-bottom: 12px; }
+.cta-card p { color: #4B5563; font-size: 14px; margin-bottom: 20px; }
+.process-mini { padding: 60px 40px; background: #ffffff; }
+.process-mini-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; max-width: 1000px; margin: 0 auto; counter-reset: step; }
+.process-mini-step { text-align: center; padding: 24px; position: relative; background: #F8FAFB; border-radius: 16px; border: 1px solid rgba(27,79,114,0.06); }
+.process-mini-step::before { counter-increment: step; content: counter(step); font-family: 'Playfair Display', serif; font-size: 3rem; font-weight: 700; color: rgba(201,168,76,0.15); display: block; margin-bottom: 8px; }
+.process-mini-step h4 { font-size: 1rem; color: #111827; margin-bottom: 8px; }
+.process-mini-step p { color: #4B5563; font-size: 13px; }
+.other-services-section { padding: 80px 40px; background: #F8FAFB; }
+.other-services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; max-width: 1100px; margin: 0 auto; }
+.other-services-section .service-card { background: #ffffff; padding: 28px 24px; }
+.other-services-section .service-icon { font-size: 2rem; margin-bottom: 16px; }
+.other-services-section h3 { font-size: 1.1rem; margin-bottom: 8px; }
+.cta-section { padding: 80px 40px; text-align: center; background: linear-gradient(135deg, #1B4F72 0%, #143d59 100%); position: relative; overflow: hidden; }
+.cta-section::before { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 500px; height: 500px; background: radial-gradient(circle, rgba(201,168,76,0.1), transparent 70%); pointer-events: none; }
+.cta-content { position: relative; z-index: 1; max-width: 700px; margin: 0 auto; }
+.cta-content h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); color: #fff; margin-bottom: 16px; }
+.cta-content h2 span { color: #C9A84C; font-style: italic; }
+.cta-content p { color: rgba(255,255,255,0.75); margin-bottom: 32px; }
+@media (max-width: 768px) { .service-detail-container { grid-template-columns: 1fr; } .service-features { grid-template-columns: 1fr; } .process-mini-grid { grid-template-columns: repeat(2, 1fr); } }
+</style>
+</head>
+<body>
+<div class="loader" id="loader"><div class="loader-content"><div class="loader-logo">JBD STARR</div><div class="loader-bar"></div></div></div>
+<nav class="navbar" id="navbar">
+    <a href="../index.html" class="logo">JBD <span>Starr</span></a>
+    <ul class="nav-links">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../about.html">About</a></li>
+        <li><a href="../services.html" class="active">Services</a></li>
+        <li><a href="../gallery.html">Gallery</a></li>
+        <li><a href="../contact.html">Contact</a></li>
+        <li><a href="../contact.html" class="nav-cta">Free Quote</a></li>
+    </ul>
+    <button class="mobile-menu-btn">☰</button>
+</nav>
+<header class="page-header">
+    <span class="service-icon-large">🚿</span>
+    <span class="section-label">Our Services</span>
+    <h1>Bathroom Renovation</h1>
+    <p>Luxury tile work, custom vanities, and expert plumbing. Your bathroom should feel like a retreat — and look like one too...</p>
+</header>
+<section class="service-detail-section">
+    <div class="service-detail-container">
+        <div class="service-detail-text fade-left">
+            <h2>About Our <span>Bathroom Renovation</span> Service</h2>
+            <p>Luxury tile work, custom vanities, and expert plumbing. Your bathroom should feel like a retreat — and look like one too. Whether it is a powder room refresh or a master ensuite transformation, we handle every detail with precision and care.</p>
+            <p>We understand that every home and every homeowner is unique. That is why we take the time to listen to your goals, assess your space, and create a customized plan that fits your budget and timeline.</p>
+            <h3 style="font-size:1.1rem;color:#111827;margin:28px 0 16px;">What's Included</h3>
+            <ul class="service-features">
+                <li>Custom tile & stone work</li><li>Walk-in shower & tub installation</li><li>Vanity & countertop replacement</li><li>Plumbing fixture upgrades</li><li>Heated flooring options</li><li>Lighting & ventilation updates</li><li>Waterproofing & membrane systems</li><li>Glass shower enclosures</li><li>Custom storage solutions</li><li>Accessible & aging-in-place options</li>
+            </ul>
+            <a href="tel:+16474468418" class="btn btn-primary">Get a Free Quote →</a>
+        </div>
+        <div class="service-sidebar fade-right">
+            <div class="price-card">
+                <h3>Starting Price</h3>
+                <div class="price">$12,000 — $35,000</div>
+                <p>Depending on size, materials, and fixture selections.</p>
+                <a href="tel:+16474468418" class="btn btn-primary btn-small" style="width:100%;justify-content:center;">Request Quote</a>
+            </div>
+            <div class="timeline-card">
+                <h3>Typical Timeline</h3>
+                <div class="timeline">2–4 weeks</div>
+            </div>
+            <div class="cta-card">
+                <h3>Not Sure What You Need?</h3>
+                <p>Book a free consultation and we will walk your space together.</p>
+                <a href="tel:+16474468418" class="btn btn-outline btn-small" style="width:100%;justify-content:center;">Book Free Consult</a>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="process-mini">
+    <div class="section-header fade-up">
+        <span class="section-label">How It Works</span>
+        <h2>Simple <span>4-Step</span> Process</h2>
+    </div>
+    <div class="process-mini-grid stagger-container">
+        <div class="process-mini-step">
+            <h4>Consultation</h4>
+            <p>We visit your home, discuss your vision, and take measurements.</p>
+        </div>
+        <div class="process-mini-step">
+            <h4>Detailed Quote</h4>
+            <p>Itemized quote within 48–72 hours with clear pricing.</p>
+        </div>
+        <div class="process-mini-step">
+            <h4>Build & Renovate</h4>
+            <p>Our team arrives on schedule and executes the plan.</p>
+        </div>
+        <div class="process-mini-step">
+            <h4>Final Walkthrough</h4>
+            <p>We review every detail together. Your satisfaction confirmed.</p>
+        </div>
+    </div>
+</section>
+<section class="other-services-section">
+    <div class="section-header fade-up">
+        <span class="section-label">Explore More</span>
+        <h2>Other <span>Services</span></h2>
+    </div>
+    <div class="other-services-grid stagger-container">
+        <a href="full-home-remodeling.html" class="service-card" style="text-decoration:none;">
+            <span class="service-icon">🏠</span>
+            <h3>Full Home Remodeling</h3>
+            <p style="color:#4B5563;font-size:14px;">Explore this service →</p>
+        </a><a href="legal-basement-finishing.html" class="service-card" style="text-decoration:none;">
+            <span class="service-icon">🏗️</span>
+            <h3>Legal Basement Finishing</h3>
+            <p style="color:#4B5563;font-size:14px;">Explore this service →</p>
+        </a><a href="painting.html" class="service-card" style="text-decoration:none;">
+            <span class="service-icon">🎨</span>
+            <h3>Painting</h3>
+            <p style="color:#4B5563;font-size:14px;">Explore this service →</p>
+        </a><a href="flooring.html" class="service-card" style="text-decoration:none;">
+            <span class="service-icon">🪵</span>
+            <h3>Flooring</h3>
+            <p style="color:#4B5563;font-size:14px;">Explore this service →</p>
+        </a>
+    </div>
+</section>
+<section class="cta-section">
+    <div class="cta-content fade-up">
+        <h2>Ready to Start Your <span>Bathroom Renovation</span>?</h2>
+        <p>Get your free, no-obligation quote. We respond within 24 hours.</p>
+        <a href="tel:+16474468418" class="btn btn-primary" style="font-size:16px;padding:16px 40px;">Call 647-446-8418</a>
+    </div>
+</section>
+
+    <div class="sticky-buttons">
+        <a href="https://wa.me/message/5JP5APSEA4PGI1" target="_blank" class="sticky-btn whatsapp" title="WhatsApp">💬<span class="tooltip">WhatsApp Chat</span></a>
+        <a href="tel:+16474468418" class="sticky-btn call" title="Call">📞<span class="tooltip">Call 647-446-8418</span></a>
+    </div>
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <a href="../index.html" class="logo">JBD <span>Starr</span></a>
+                <p>Brampton & GTA's trusted renovation specialists. Licensed, insured, and committed to quality since 2014.</p>
+                <div class="footer-social">
+                    <a href="https://facebook.com/jbdstarr" target="_blank" title="Facebook">f</a>
+                    <a href="https://instagram.com/jbdstarr" target="_blank" title="Instagram">📷</a>
+                    <a href="https://g.page/jbdstarr/review" target="_blank" title="Google Reviews">G</a>
+                    <a href="https://houzz.com/pro/jbdstarr" target="_blank" title="Houzz">H</a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Services</h4>
+                <ul>
+                    <li><a href="../services/full-home-remodeling.html">Full Home Remodeling</a></li>
+                    <li><a href="../services/legal-basement-finishing.html">Basement Finishing</a></li>
+                    <li><a href="../services/bathroom-renovation.html">Bathroom Renovation</a></li>
+                    <li><a href="../services/painting.html">Painting</a></li>
+                    <li><a href="../services/flooring.html">Flooring</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="../about.html">About Us</a></li>
+                    <li><a href="../gallery.html">Our Work</a></li>
+                    <li><a href="../contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Areas</h4>
+                <ul><li>Brampton</li><li>Mississauga</li><li>Oakville</li><li>Milton</li><li>Ajax</li></ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <div class="footer-contact-item"><span class="icon">📧</span><a href="mailto:jbdstarr@outlook.com">jbdstarr@outlook.com</a></div>
+                <div class="footer-contact-item"><span class="icon">📱</span><a href="tel:+16474468418">647-446-8418</a></div>
+                <div class="footer-contact-item"><span class="icon">💬</span><a href="https://wa.me/message/5JP5APSEA4PGI1" target="_blank">WhatsApp Chat</a></div>
+                <div class="footer-contact-item"><span class="icon">📍</span><span>Brampton, Ontario, Canada</span></div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>© 2026 JBD Starr. All rights reserved.</span>
+            <span>Licensed & Insured · WSIB Covered</span>
+        </div>
+    </footer>
+    <script src="../scripts.js"></script>
+</body>
+</html>
